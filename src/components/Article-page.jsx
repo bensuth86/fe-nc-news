@@ -1,11 +1,13 @@
 import { useEffect, useState } from "react"
 import { useParams } from 'react-router-dom'
 import { fetchArticleById, fetchCommentsById } from "../utils/utils"
+import CommentsList from "./Comment-list"
 
 function SingleArticle() {
     const [article, setArticle] = useState([])
-    const [comments, setComments] = useState([])
-    const { id } = useParams()  
+    const [commentsList, setcommentsList] = useState([])
+    const [toggle, setToggle] = useState(false)
+    const { id } = useParams()
 
     useEffect(() => {
         fetchArticleById(id).then((articleData) => {
@@ -15,7 +17,7 @@ function SingleArticle() {
 
     useEffect(() => {
         fetchCommentsById(id).then((commentsData) => {
-            setComments(commentsData)
+            setcommentsList(commentsData)
         })
     }, [])
 
@@ -24,10 +26,11 @@ function SingleArticle() {
             <h2 >{ article.title }</h2>
             <img src={article.article_img_url} alt="Not found"></img>
             <body> {article.body} </body>
-            <section> 
-                {/* {comments.body} */}
+                     
+            <section >
+                <button onClick={() => setToggle(!toggle)}>View Comments</button>
+                {toggle && (<CommentsList list={commentsList} />)}                    
             </section>
-
         </div>
     )
 }
