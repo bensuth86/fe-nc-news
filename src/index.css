@@ -29,13 +29,10 @@
   margin-bottom: 16px
 } */
 
-.nc-container {
- 
+.nc-container { 
   padding: 8px 16px;
   border-style: solid;
   border-color: rgb(255, 255, 255);
-  
- 
 }
 
 nav:hover {
@@ -63,6 +60,16 @@ nav:hover {
 /* components */
 
 .articlecard, .nc-container, .nav:hover {
+  border: 1px solid hsl(0, 0%, 80%);
+  border-radius: 10px;
+  /* box-shadow: 5px 5px 5px hsl(0, 0%, 0%); */
+  padding: 20px;   
+  display: inline-block;
+}
+
+.commentcard, .nc-container {
+  margin: 10px;
+  
   border: 1px solid hsl(0, 0%, 80%);
   border-radius: 10px;
   /* box-shadow: 5px 5px 5px hsl(0, 0%, 0%); */
