@@ -7,25 +7,41 @@ function SingleArticle() {
     const [article, setArticle] = useState([])
     const [commentsList, setcommentsList] = useState([])
     const [toggle, setToggle] = useState(false)
+    const [isLoading, setIsLoading] = useState(true);
     const { id } = useParams()
+
+    let d = new Date(article.created_at)
 
     useEffect(() => {
         fetchArticleById(id).then((articleData) => {
             setArticle(articleData)
+            setIsLoading(false)
         })
     }, [id])
 
     useEffect(() => {
         fetchCommentsById(id).then((commentsData) => {
             setcommentsList(commentsData)
+
         })
     }, [])
 
+    if (isLoading) return <p>Loading...</p>
     return (
         <div className="articlecard">
             <h2 >{ article.title }</h2>
             <img src={article.article_img_url} alt="Not found"></img>
             <body> {article.body} </body>
+            <h3> {article.author}</h3>
+            <div>
+            <i className="left-align"> 
+                    posted at: {`${d.getHours().toString().padStart(2, '0')}:${d.getMinutes().toString().padStart(2, '0')} 
+                    ${d.getDate()}/${d.getMonth()}/${d.getFullYear()} `}
+                </i>
+                <i className="right-float"> votes: {article.votes}</i>
+                
+            </div>
+            
                      
             <section >
                 <button onClick={() => setToggle(!toggle)}>View Comments</button>

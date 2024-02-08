@@ -1,3 +1,6 @@
+import { useState } from "react"
+
+
 function CommentCard( {comment}) {
 
     let d = new Date(comment.created_at)
@@ -6,10 +9,10 @@ function CommentCard( {comment}) {
         <div className="commentcard">
             <h3>{comment.author}</h3>
             <body>{comment.body}</body>
-            <div>
+            <div>                
                 <i className="left-align"> 
-                posted at: {`${d.getHours().toString().padStart(2, '0')}:${d.getMinutes().toString().padStart(2, '0')} 
-                 ${d.getDate()}/${d.getMonth()}/${d.getFullYear()} `}
+                    posted at: {`${d.getHours().toString().padStart(2, '0')}:${d.getMinutes().toString().padStart(2, '0')} 
+                    ${d.getDate()}/${d.getMonth()}/${d.getFullYear()} `}
                 </i>
                 <i className="right-float"> votes: {comment.votes}</i>
             </div>           
