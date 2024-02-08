@@ -31,18 +31,15 @@ function SingleArticle() {
         <div className="articlecard">
             <h2 >{ article.title }</h2>
             <img src={article.article_img_url} alt="Not found"></img>
-            <body> {article.body} </body>
+            <div> {article.body} </div>
             <h3> {article.author}</h3>
-            <div>
+
             <i className="left-align"> 
                     posted at: {`${d.getHours().toString().padStart(2, '0')}:${d.getMinutes().toString().padStart(2, '0')} 
                     ${d.getDate()}/${d.getMonth()}/${d.getFullYear()} `}
-                </i>
-                <i className="right-float"> votes: {article.votes}</i>
-                
-            </div>
-            
-                     
+            </i>
+                <i className="right-float"> votes: {article.votes}</i>  
+                              
             <section >
                 <button onClick={() => setToggle(!toggle)}>View Comments</button>
                 {toggle && (<CommentsList list={commentsList} />)}                    

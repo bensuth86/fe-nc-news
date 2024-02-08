@@ -4,7 +4,7 @@ export function getAllArticles() {
     return axios
         .get("https://stumpyjoe.onrender.com/api/articles")
         .then((response) => {
-            // console.log(response.data.articles)
+            
             return response.data.articles
         })
 }
@@ -15,7 +15,7 @@ const myApi = axios.create({
 
 export function fetchArticleById(article_id) {
     return myApi.get(`/articles/${article_id}`).then((res) => {
-        console.log(res.data.article)
+        // console.log(res.data.article)
         return res.data.article
     })
 }
