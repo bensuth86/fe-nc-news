@@ -21,9 +21,22 @@ export function fetchArticleById(article_id) {
 }
 
 export function fetchCommentsById(article_id) {
-    return myApi.get(`articles/${article_id}/comments`).then((res) => {
+    return myApi.get(`/articles/${article_id}/comments`).then((res) => {
         // console.log(res.data.comments)
         return res.data.comments
+    })
+}
+
+export function patchVotesById(article_id, increment) {
+    // console.log(article_id)
+    return axios    
+    .patch(`https://stumpyjoe.onrender.com/api/articles/${article_id}`
+        ,{inc_votes: increment})
+    
+    .then((res) => {
+        
+        return res.data.articles
+
     })
 }
 
