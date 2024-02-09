@@ -2,12 +2,14 @@ import { useEffect, useState } from "react"
 import { useParams } from 'react-router-dom'
 import { fetchArticleById, fetchCommentsById } from "../utils/utils"
 import CommentsList from "./Comment-list"
+import UserVote from "./Article-votes"
 
 function SingleArticle() {
     const [article, setArticle] = useState([])
     const [commentsList, setcommentsList] = useState([])
     const [toggle, setToggle] = useState(false)
     const [isLoading, setIsLoading] = useState(true);
+
     const { id } = useParams()
 
     let d = new Date(article.created_at)
@@ -38,8 +40,9 @@ function SingleArticle() {
                     posted at: {`${d.getHours().toString().padStart(2, '0')}:${d.getMinutes().toString().padStart(2, '0')} 
                     ${d.getDate()}/${d.getMonth()}/${d.getFullYear()} `}
             </i>
+                <UserVote id={id} setArticle={setArticle}/>
                 <i className="right-float"> votes: {article.votes}</i>  
-                              
+
             <section >
                 <button onClick={() => setToggle(!toggle)}>View Comments</button>
                 {toggle && (<CommentsList list={commentsList} />)}                    

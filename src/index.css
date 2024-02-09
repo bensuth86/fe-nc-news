@@ -60,6 +60,7 @@ nav:hover {
 /* components */
 
 .articlecard, .nc-container, .nav:hover {
+  margin-top: 20px;
   border: 1px solid hsl(0, 0%, 80%);
   border-radius: 10px;
   /* box-shadow: 5px 5px 5px hsl(0, 0%, 0%); */
