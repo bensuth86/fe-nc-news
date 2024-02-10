@@ -14,21 +14,23 @@ const myApi = axios.create({
   });
 
 export function fetchArticleById(article_id) {
-    return myApi.get(`/articles/${article_id}`).then((res) => {
+    return myApi.get(`/articles/${article_id}`)
+    .then((res) => {
         // console.log(res.data.article)
         return res.data.article
     })
 }
 
 export function fetchCommentsById(article_id) {
-    return myApi.get(`/articles/${article_id}/comments`).then((res) => {
+    return myApi.get(`/articles/${article_id}/comments`)
+    .then((res) => {
         // console.log(res.data.comments)
         return res.data.comments
     })
 }
 
 export function patchVotesById(article_id, increment) {
-    // console.log(article_id)
+    
     return axios    
     .patch(`https://stumpyjoe.onrender.com/api/articles/${article_id}`
         ,{inc_votes: increment})
@@ -39,6 +41,29 @@ export function patchVotesById(article_id, increment) {
 
     })
 }
+
+export function postCommentById(article_id, commentbody, user) {
+    
+    return myApi.post(`/articles/${article_id}/comments`,         
+        {body: commentbody,
+        username: user}
+      )
+    .then((res) => {
+        console.log((res))
+    })
+}
+
+// export function postCommentById(article_id, comment, user) {
+    
+//     return axios
+//     .post(`https://stumpyjoe.onrender.com/api/articles/${article_id}/comments`,         
+//         {body: comment,
+//         username: user}
+//       )
+//     .then((res) => {
+//         console.log((res))
+//     })
+// }
 
 // export function reformatISOdate(created_at) {
 

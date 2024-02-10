@@ -1,9 +1,9 @@
-import { useEffect, useState } from "react"
 import { patchVotesById } from "../utils/utils"
 
 function UserVote({ id, setArticle }) {
-    
-    const handleVoteUp = () => {        
+   
+    const handleVoteUp = () => {   
+           
         patchVotesById(id, 1).then((article) => {
             setArticle(article)
         })
